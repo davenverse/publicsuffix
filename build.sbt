@@ -12,7 +12,7 @@ ThisBuild / tlSonatypeUseLegacyHost := true
 
 val Scala213 = "2.13.7"
 
-ThisBuild / crossScalaVersions := Seq("2.12.15", Scala213)
+ThisBuild / crossScalaVersions := Seq(Scala213, "3.1.1")
 ThisBuild / scalaVersion := Scala213
 
 ThisBuild / testFrameworks += new TestFramework("munit.Framework")
@@ -23,7 +23,7 @@ val munitCatsEffectV = "1.0.7"
 
 // Projects
 lazy val `publicsuffix` = tlCrossRootProject
-  .aggregate(core, retrieval)
+  .aggregate(core, retrieval, `retrieval-client`, examples)
 
 lazy val core = crossProject(JVMPlatform, JSPlatform)
   .crossType(CrossType.Full)
