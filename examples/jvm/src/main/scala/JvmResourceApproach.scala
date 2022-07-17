@@ -7,8 +7,7 @@ object JvmResourceApproach  {
     val site = "haha.whatisthis.global.prod.fastly.net"
     // val site = "食狮.com.cn"
     // val site = "baz.blah.foo.r.appspot.com"
-    // val site = "www.ck"
-    // val site = "foo.ck"
+
     // val site = "unknown"
     // val site = "christopherdavenport.github.io"
     val ps = PublicSuffix.global

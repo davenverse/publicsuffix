@@ -10,3 +10,22 @@ libraryDependencies ++= Seq(
   "io.chrisdavenport" %% "publicsuffix" % "<version>"
 )
 ```
+
+## How to use
+
+```scala mdoc
+import io.chrisdavenport.publicsuffix.PublicSuffix
+
+// On the jvm you have a global
+val ps = PublicSuffix.global
+
+ps.publicSuffix("baz.blah.foo.r.appspot.com")
+ps.publicSuffix("foo")
+ps.publicSuffix("christopherdavenport.github.io")
+ps.publicSuffix("foo.ck") // Wildcard
+ps.publicSuffix("www.ck") // Exception
+```
+
+A note on using it from different targets. If you are using node/jvm you can get a current version
+of public suffix via `io.chrisdavenport.publicsuffix.retrieval.client.PublicSuffixRetrieval.getPublicSuffix` if you
+are in the browser, you will need to use [http4s-dom](https://github.com/http4s/http4s-dom) and then load the rules via `io.chrisdavenport.publicsuffix.retrieval.Rules.retrieval.getRules(yourClient).map(PublicSuffix.fromRules)`
