@@ -19,11 +19,12 @@ import io.chrisdavenport.publicsuffix.PublicSuffix
 // On the jvm you have a global
 val ps = PublicSuffix.global
 
-ps.publicSuffix("baz.blah.foo.r.appspot.com")
-ps.publicSuffix("foo")
-ps.publicSuffix("christopherdavenport.github.io")
+ps.publicSuffix("com") // tld
+ps.publicSuffix("christopherdavenport.github.io") // registrableDomain from a hard rule
 ps.publicSuffix("foo.ck") // Wildcard
 ps.publicSuffix("www.ck") // Exception
+ps.publicSuffix("myExample.இந்தியா") // utf-8
+ps.publicSuffix("baz.blah.foo.r.appspot.com") // Extra domain segments
 ```
 
 A note on using it from different targets. If you are using node/jvm you can get a current version
