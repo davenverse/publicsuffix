@@ -102,18 +102,20 @@
 
 </span><span class="comment">// On the jvm you have a global
 </span><span class="keyword">val</span><span> </span><span class="identifier">ps</span><span> = </span><span class="type-name">PublicSuffix</span><span>.</span><span class="identifier">global</span><span>
-</span><span class="comment">// ps: PublicSuffix = io.chrisdavenport.publicsuffix.PublicSuffix$PublicSuffixFromRules@7469c15c
+</span><span class="comment">// ps: PublicSuffix = io.chrisdavenport.publicsuffix.PublicSuffix$PublicSuffixFromRules@639f50d5
 </span><span>
-</span><span class="identifier">ps</span><span>.</span><span class="identifier">publicSuffix</span><span>(</span><span class="string-literal">&quot;baz.blah.foo.r.appspot.com&quot;</span><span>)
-</span><span class="comment">// res0: String = &quot;foo.r.appspot.com&quot;
-</span><span class="identifier">ps</span><span>.</span><span class="identifier">publicSuffix</span><span>(</span><span class="string-literal">&quot;foo&quot;</span><span>)
-</span><span class="comment">// res1: String = &quot;foo&quot;
-</span><span class="identifier">ps</span><span>.</span><span class="identifier">publicSuffix</span><span>(</span><span class="string-literal">&quot;christopherdavenport.github.io&quot;</span><span>)
-</span><span class="comment">// res2: String = &quot;github.io&quot;
+</span><span class="identifier">ps</span><span>.</span><span class="identifier">publicSuffix</span><span>(</span><span class="string-literal">&quot;com&quot;</span><span>) </span><span class="comment">// tld
+// res0: String = &quot;com&quot; // tld
+</span><span class="identifier">ps</span><span>.</span><span class="identifier">publicSuffix</span><span>(</span><span class="string-literal">&quot;christopherdavenport.github.io&quot;</span><span>) </span><span class="comment">// registrableDomain from a hard rule
+// res1: String = &quot;github.io&quot; // registrableDomain from a hard rule
 </span><span class="identifier">ps</span><span>.</span><span class="identifier">publicSuffix</span><span>(</span><span class="string-literal">&quot;foo.ck&quot;</span><span>) </span><span class="comment">// Wildcard
-// res3: String = &quot;foo.ck&quot; // Wildcard
+// res2: String = &quot;foo.ck&quot; // Wildcard
 </span><span class="identifier">ps</span><span>.</span><span class="identifier">publicSuffix</span><span>(</span><span class="string-literal">&quot;www.ck&quot;</span><span>) </span><span class="comment">// Exception
-// res4: String = &quot;ck&quot;</span></code></pre>
+// res3: String = &quot;ck&quot; // Exception
+</span><span class="identifier">ps</span><span>.</span><span class="identifier">publicSuffix</span><span>(</span><span class="string-literal">&quot;myExample.இந்தியா&quot;</span><span>) </span><span class="comment">// utf-8
+// res4: String = &quot;\u0b87\u0ba8\u0bcd\u0ba4\u0bbf\u0baf\u0bbe&quot; // utf-8
+</span><span class="identifier">ps</span><span>.</span><span class="identifier">publicSuffix</span><span>(</span><span class="string-literal">&quot;baz.blah.foo.r.appspot.com&quot;</span><span>) </span><span class="comment">// Extra domain segments
+// res5: String = &quot;foo.r.appspot.com&quot;</span></code></pre>
         <p>A note on using it from different targets. If you are using node/jvm you can get a current version
         of public suffix via <code>io.chrisdavenport.publicsuffix.retrieval.client.PublicSuffixRetrieval.getPublicSuffix</code> if you
         are in the browser, you will need to use <a href="https://github.com/http4s/http4s-dom">http4s-dom</a> and then load the rules via <code>io.chrisdavenport.publicsuffix.retrieval.Rules.retrieval.getRules(yourClient).map(PublicSuffix.fromRules)</code></p>
