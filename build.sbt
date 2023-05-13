@@ -17,7 +17,7 @@ ThisBuild / scalaVersion := Scala213
 
 ThisBuild / testFrameworks += new TestFramework("munit.Framework")
 
-val http4sV = "0.23.11"
+val http4sV = "0.23.19"
 val munitCatsEffectV = "1.0.7"
 
 
