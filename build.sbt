@@ -18,7 +18,7 @@ ThisBuild / scalaVersion := Scala213
 ThisBuild / testFrameworks += new TestFramework("munit.Framework")
 
 val http4sV = "0.23.11"
-val munitCatsEffectV = "1.0.7"
+val munitCatsEffectV = "2.0.0"
 
 
 // Projects
@@ -32,7 +32,7 @@ lazy val core = crossProject(JVMPlatform, JSPlatform)
     name := "publicsuffix",
 
     libraryDependencies ++= Seq(
-      "org.typelevel" %%% "munit-cats-effect-3"  % munitCatsEffectV % Test,
+      "org.typelevel" %%% "munit-cats-effect"  % munitCatsEffectV % Test,
     )
   ).jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule)},
